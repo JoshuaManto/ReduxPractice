@@ -5,6 +5,13 @@ const initialState = {
   results: []
 };
 
+const deleteResult = (state, action) => {
+  const updatedArray = state.results.filter(
+    result => result.id !== action.resultElementId
+  );
+  return updatedObject(state, { results: updatedArray });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.STORE_RESULT:
@@ -21,16 +28,17 @@ const reducer = (state = initialState, action) => {
       // const newArray = [...state.results];
       // newArray.splice(id, 1);
 
-      const updatedArray = state.results.filter(
-        result => result.id !== action.resultElementId
-      );
+      // const updatedArray = state.results.filter(
+      //   result => result.id !== action.resultElementId
+      // );
 
-      return updatedObject(state, { results: updatedArray });
+      // return updatedObject(state, { results: updatedArray });
 
-    // return {
-    //   ...state,
-    //   results: updatedArray
-    // };
+      // return {
+      //   ...state,
+      //   results: updatedArray
+      // };
+      return deleteResult(state, action);
   }
 
   // if (action.type === 'INCREMENT') {
