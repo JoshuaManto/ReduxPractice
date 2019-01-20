@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import { updatedObject } from '../utility';
 
 const initialState = {
   results: []
@@ -7,11 +8,14 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.STORE_RESULT:
-      return {
-        ...state,
-        // Using concat is an immutable way of manipulating an array
+      return updatedObject(state, {
         results: state.results.concat({ id: new Date(), value: action.result })
-      };
+      });
+    // return {
+    //   ...state
+    //   // Using concat is an immutable way of manipulating an array
+    //   results: state.results.concat({ id: new Date(), value: action.result })
+    // };
     case actionTypes.DELETE_RESULT:
       // const id = 2;
       // const newArray = [...state.results];
@@ -21,10 +25,12 @@ const reducer = (state = initialState, action) => {
         result => result.id !== action.resultElementId
       );
 
-      return {
-        ...state,
-        results: updatedArray
-      };
+      return updatedObject(state, { results: updatedArray });
+
+    // return {
+    //   ...state,
+    //   results: updatedArray
+    // };
   }
 
   // if (action.type === 'INCREMENT') {

@@ -1,4 +1,4 @@
-import * as actionTypes from './actions/actions';
+import * as actionTypes from './actions/actionTypes';
 
 const initialState = {
   counter: 0,
@@ -37,6 +37,7 @@ const reducer = (state = initialState, action) => {
         counter: state.counter - action.val
       };
     case actionTypes.STORE_RESULT:
+      // You can change data here
       return {
         ...state,
         // Using concat is an immutable way of manipulating an array

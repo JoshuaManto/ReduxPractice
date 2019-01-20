@@ -89,6 +89,8 @@ const mapDispatchToProps = dispatch => {
     onAddCounter: () => dispatch(actionCreators.add(10)),
     onSubtractCounter: () => dispatch(actionCreators.subtract(10)),
     onStoreResult: result => dispatch(actionCreators.storeResult(result)),
+    onDeleteResult: id => dispatch(actionCreators.deleteResult(id))
+
     // onIncrementCounter: () => dispatch({ actionCreators.increment() }),
     // onDecrementCounter: () => dispatch({ type: actionTypes.DECREMENT }),
     // onAddCounter: () => dispatch({ type: actionTypes.ADD, val: 10 }),
@@ -97,7 +99,6 @@ const mapDispatchToProps = dispatch => {
     //   dispatch({ type: actionTypes.STORE_RESULT, result: result }),
 
     // Got ID from UI and pass it in the action.
-    onDeleteResult: id => dispatch(actionCreators.deleteResult(id))
     // onDeleteResult: id =>
     //   dispatch({ type: actionTypes.DELETE_RESULT, resultElementId: id })
   };
