@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions';
+// import * as actionTypes from '../../store/actions/actions';
+// import { increment } from '../../store/actions/actions';
+import * as actionCreators from '../../store/actions/actions';
 
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
@@ -82,15 +84,22 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onIncrementCounter: () => dispatch({ type: actionTypes.INCREMENT }),
-    onDecrementCounter: () => dispatch({ type: actionTypes.DECREMENT }),
-    onAddCounter: () => dispatch({ type: actionTypes.ADD, val: 10 }),
-    onSubtractCounter: () => dispatch({ type: actionTypes.SUBTRACT, val: 10 }),
-    onStoreResult: result =>
-      dispatch({ type: actionTypes.STORE_RESULT, result: result }),
+    onIncrementCounter: () => dispatch(actionCreators.increment()),
+    onDecrementCounter: () => dispatch(actionCreators.decrement()),
+    onAddCounter: () => dispatch(actionCreators.add(10)),
+    onSubtractCounter: () => dispatch(actionCreators.subtract(10)),
+    onStoreResult: result => dispatch(actionCreators.storeResult(result)),
+    // onIncrementCounter: () => dispatch({ actionCreators.increment() }),
+    // onDecrementCounter: () => dispatch({ type: actionTypes.DECREMENT }),
+    // onAddCounter: () => dispatch({ type: actionTypes.ADD, val: 10 }),
+    // onSubtractCounter: () => dispatch({ type: actionTypes.SUBTRACT, val: 10 }),
+    // onStoreResult: result =>
+    //   dispatch({ type: actionTypes.STORE_RESULT, result: result }),
+
     // Got ID from UI and pass it in the action.
-    onDeleteResult: id =>
-      dispatch({ type: actionTypes.DELETE_RESULT, resultElementId: id })
+    onDeleteResult: id => dispatch(actionCreators.deleteResult(id))
+    // onDeleteResult: id =>
+    //   dispatch({ type: actionTypes.DELETE_RESULT, resultElementId: id })
   };
 };
 
